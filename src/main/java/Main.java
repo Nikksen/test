@@ -2,48 +2,33 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner1 = new Scanner(System.in);
-        int try1;
-        int x = (int) (Math.random() * 11);
-        int attempts = 3;
-        System.out.println("Generated number " + x);
+        int randomNumber = (int) (Math.random() * 11);
+        Scanner scanner = new Scanner(System.in);
+        int counter = 0;
 
-        System.out.println("Guess number from 0 to 10 with 3 attempts");
-        for (int iterator = 1; iterator <= 3; iterator++) {
-            //hasNextInt проверяет что имеено инт а не другой сивол
-            System.out.println("Кол-во попыток " + attempts);
+        System.out.println("Компьютер загадал число от 0 до 10, у тебя есть 3 попытки что бы его отгадать)");
+        System.out.println();
+        System.out.println("Поехали!!!");
 
-            if (scanner1.hasNextInt()) {
-                try1 = scanner1.nextInt();
-                if (try1 < 0 || try1 > 10) {
-                    System.out.println("Enter from 0 to 10");
-                    iterator--;
-                    continue;
-                }
+        while (true) {
+            if (scanner.hasNextInt()) {
+                int b = scanner.nextInt();
+                counter++;
 
-                if (try1 == x) {
-                    System.out.println("Win!!");
+                if (b == randomNumber) {
+                    System.out.println("Поздравляю вы выиграли!!!");
                     break;
-                } else if (try1 < x) {
-                    System.out.println("Number is bigger");
-                    scanner1.nextLine();
+                } else if (counter == 3) {
+                    System.out.println("Вы проиграли(");
+                    break;
                 } else {
-                    System.out.println("Number is smaller");
-                    scanner1.nextLine();
+                    System.out.println("Попробуйте еще раз");
+                    scanner.nextLine();
                 }
-
-                if(iterator == 3) {
-                    System.out.println("Bad beat");
-                }
-
-                attempts--;
-
             } else {
-                System.out.println("Wrong data, enter digits");
-                scanner1.nextLine();
-                iterator--;
+                System.out.println("Вы ввели не целочисленое значение, попробуйте снова");
+                scanner.nextLine();
             }
-
         }
 
 
