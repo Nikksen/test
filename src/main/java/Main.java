@@ -1,36 +1,22 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        int randomNumber = (int) (Math.random() * 11);
-        Scanner scanner = new Scanner(System.in);
-        int counter = 0;
+        //В Японии числа 4 и 9 считаются несчастливыми.
+        //Вам нужно пронумеровать 100 космических шаттлов для перевозки людей на Марс так,
+        //чтобы в номерах шаттлов не случалось несчастливых чисел. Напишите функцию, выводящую все номера таких шаттлов.
 
-        System.out.println("Компьютер загадал число от 0 до 10, у тебя есть 3 попытки что бы его отгадать)");
-        System.out.println();
-        System.out.println("Поехали!!!");
-
-        while (true) {
-            if (scanner.hasNextInt()) {
-                int b = scanner.nextInt();
-                counter++;
-
-                if (b == randomNumber) {
-                    System.out.println("Поздравляю вы выиграли!!!");
-                    break;
-                } else if (counter == 3) {
-                    System.out.println("Вы проиграли(");
-                    break;
-                } else {
-                    System.out.println("Попробуйте еще раз");
-                    scanner.nextLine();
-                }
+        int counterShuttles = 0;
+        for (int i = 0; ; i++) {
+            if (i / 10 == 4 || i / 10 == 9 ||
+                    i / 10 == 14 || i / 10 == 19 || i % 10 == 4 || i % 10 == 9) {
+                continue;
             } else {
-                System.out.println("Вы ввели не целочисленое значение, попробуйте снова");
-                scanner.nextLine();
+                counterShuttles++;
             }
+            if (counterShuttles == 100){
+                break;
+            }
+            System.out.println(i);
         }
-
 
     }
 
