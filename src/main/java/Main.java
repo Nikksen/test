@@ -1,23 +1,24 @@
 public class Main {
     public static void main(String[] args) {
-        //В Японии числа 4 и 9 считаются несчастливыми.
-        //Вам нужно пронумеровать 100 космических шаттлов для перевозки людей на Марс так,
-        //чтобы в номерах шаттлов не случалось несчастливых чисел. Напишите функцию, выводящую все номера таких шаттлов.
+        int sumAverage1 = 0;
+        int sumAverage2 = 0;
+        int min = 18;
+        int max = 40;
+        int[] firstTeam = new int[25];
+        int[] ageTeam2= new int[25];
 
-        int counterShuttles = 0;
-        for (int i = 0; ; i++) {
-            if (i / 10 == 4 || i / 10 == 9 ||
-                    i / 10 == 14 || i / 10 == 19 || i % 10 == 4 || i % 10 == 9) {
-                continue;
-            } else {
-                counterShuttles++;
-            }
-            if (counterShuttles == 100){
-                break;
-            }
-            System.out.println(i);
+        for (int i=0; i < firstTeam.length;i++){
+            firstTeam[i] = (int) (Math.random()*(40 - 18) + 18);
+            ageTeam2[i] = (int) (Math.random()*(40 - 18) + 18);
+
+            System.out.print(firstTeam[i]);
+            System.out.println();
+            sumAverage1 += firstTeam[i]; // тоже самое что sumAverage1 = sumAverage1 + firstTeam[i];
+            sumAverage2 += ageTeam2[i];
         }
 
+        double average1 = (double) sumAverage1 / firstTeam.length;
+        double average2 = (double) sumAverage2 / firstTeam.length;
     }
 
 }
